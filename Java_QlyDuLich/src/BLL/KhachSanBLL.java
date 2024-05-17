@@ -50,7 +50,17 @@ public class KhachSanBLL {
        return table;
         
     }
-    
+    public static ComboBoxModel cbb_show(){
+        
+        StringBuilder items = new StringBuilder();
+        
+        for(int i = 0;i<KhachSanDAL.show().size();i++){
+            items.append(KhachSanDAL.show().get(i).getMaKS());
+            items.append("#");
+        }
+        
+        return new DefaultComboBoxModel(items.toString().split("#"));
+    }
     public static Object[] showControlWithCombobox(String cbbValue){
         ArrayList<KhachSan> list = KhachSanDAL.show();
         Object[] obj = new Object[3];
