@@ -12,16 +12,17 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.border.TitledBorder;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
+
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -86,7 +87,30 @@ public class DangNhapUI extends JFrame{
 		pnDangNhap.setBorder(border);
 	}
 
-public static String username;
+	private void addEvents() {
+		btnDangNhap.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+                            try {
+                                xuLyDangNhap();
+                            } catch (IOException ex) {
+                                Logger.getLogger(DangNhapUI.class.getName()).log(Level.WARNING, null, ex);
+                            } catch (ClassNotFoundException ex) {
+                                Logger.getLogger(DangNhapUI.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+			}
+		});
+                btnThoat.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        System.exit(0);
+                    }
+                });
+		
+	}
+        public static String username;
 	protected void xuLyDangNhap() throws IOException, ClassNotFoundException   {
 		
 		
@@ -127,31 +151,6 @@ public static String username;
                     
 		}
 	}
-	
-	private void addEvents() {
-		btnDangNhap.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-                            try {
-                                xuLyDangNhap();
-                            } catch (IOException ex) {
-                                Logger.getLogger(DangNhapUI.class.getName()).log(Level.WARNING, null, ex);
-                            } catch (ClassNotFoundException ex) {
-                                Logger.getLogger(DangNhapUI.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-			}
-		});
-                btnThoat.addActionListener(new ActionListener() {
-
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        System.exit(0);
-                    }
-                });
-		
-	}
-        
 
 	public void showWindow() {
 		this.setSize(350, 250);
