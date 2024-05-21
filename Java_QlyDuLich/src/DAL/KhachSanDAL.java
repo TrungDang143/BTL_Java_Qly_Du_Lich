@@ -59,7 +59,20 @@ public class KhachSanDAL {
         GhiFile.ghi_KhachSan_Vao_File(list);
         return true;
     }
-    
+     public static boolean delete(ArrayList<KhachSan> list, KhachSan a) throws IOException{
+        int index = -1;
+        for(int i=0;i<list.size();i++)
+            if(a.getMaKS().equals(list.get(i).getMaKS())){
+                index = i;
+            }
+        if(index!=-1){
+            list.remove(index);
+            GhiFile.ghi_KhachSan_Vao_File(list);
+            return true;
+        }
+        else
+        return false;
+    }
     public static boolean update(ArrayList<KhachSan> list, KhachSan a) throws IOException{
         int index = -1;
         for(int i=0;i<list.size();i++)
