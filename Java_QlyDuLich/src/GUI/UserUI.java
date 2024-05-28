@@ -430,7 +430,30 @@ public class UserUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tbTourDaDatMouseClicked
 
     
-
+    private void btnXoaTourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTourActionPerformed
+        try{
+            int i = tbTourDaDat.getSelectedRow();
+            if(i == -1){
+                JOptionPane.showMessageDialog(rootPane,"Hãy chọn một dòng để xóa");
+            } else if(TourDaDatDAL.show(DangNhapUI.username).isEmpty()){
+                JOptionPane.showMessageDialog(rootPane,"Không có tour đã đặt để xóa");
+            }
+            else{
+                TourDaDat delTour = TourDaDatDAL.show(DangNhapUI.username).get(i);
+                int reply = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa?", "Thông báo", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    TourDaDatDAL.delete(TourDaDatDAL.show(DangNhapUI.username), delTour);
+                    model = (DefaultTableModel) tbTourDaDat.getModel();
+                    model.setRowCount(0);
+                    show_TourDaDat();
+                } 
+                
+            }
+            
+        }
+        catch(IOException | NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Có lỗi xảy ra: "+e.getMessage());
+        }
 
 
 
