@@ -28,7 +28,31 @@ public class KhachSan implements Serializable{
         this.diaDiem = diaDiem;
     }
 
+    }
 
+    public String getMaKS() {
+        return maKS;
+    }
+
+    public void setMaKS(String maKS) {
+        this.maKS = maKS;
+    }
+
+    public String getTenKS() {
+        return tenKS;
+    }
+
+    public void setTenKS(String tenKS) {
+        this.tenKS = tenKS;
+    }
+
+    public String getDiaDiem() {
+        return diaDiem;
+    }
+
+    public void setDiaDiem(String diaDiem) {
+        this.diaDiem = diaDiem;
+    }
     
     @Override
     public String toString() {
